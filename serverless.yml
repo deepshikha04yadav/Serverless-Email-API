@@ -1,0 +1,17 @@
+service: brevo-mail-api
+
+provider:
+  name: aws
+  runtime: python3.9
+  region: ap-south-1
+
+functions:
+  sendMail:
+    handler: handler.send_mail
+    events:
+      - http:
+          path: send-mail
+          method: post
+          cors: true
+plugins:
+  - serverless-offline
